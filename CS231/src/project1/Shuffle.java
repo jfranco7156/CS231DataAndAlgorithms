@@ -15,7 +15,17 @@ public class Shuffle {
 		ArrayList arrayL = new ArrayList();
 		Random rand = new Random();
 		for(int i=0; i<10;i++) {
-			arrayL.add(rand.nextInt(100));
+			int r = rand.nextInt(100);
+			arrayL.add(r);
+			System.out.println(r);
+		}
+		for(int i=0; i<arrayL.size(); i++) {
+			System.out.println(arrayL.get(i));
+		}
+		for(int i=0; i<10;i++) {
+			int num = rand.nextInt(arrayL.size());
+			System.out.println(arrayL.remove(num));
+			System.out.println(arrayL);
 		}
 	}
 
