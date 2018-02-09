@@ -4,12 +4,12 @@ public class Card {
 	private int value;
 	
 	public Card() {
-		this.value = (int) (Math.random()*11);
+		value = (int) (Math.random()*11);
 	}
 	
 	public Card(int v) {
 		if(v>0 && v<=10) {
-			this.value = v;
+			value = v;
 		}
 		else {
 			System.out.println("Value of card must be and integer between 1 and 10");
@@ -21,6 +21,6 @@ public class Card {
 	}
 	
 	public int getValue() {
-		return this.value;	
+		return value;	
 	}
 }
