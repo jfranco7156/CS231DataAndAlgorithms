@@ -2,8 +2,8 @@ package project1;
 
 /**
  * File: Shuffle.java
- * Author: FirstName LastName
- * Date: MM/DD/YYYY
+ * Author: Jenniber Franco
+ * Date: 02/09/2018
  */
 
 import java.util.ArrayList;

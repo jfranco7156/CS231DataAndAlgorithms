@@ -1,5 +1,13 @@
 package project1;
 
+/**
+ * File: Card.java
+ * Author: Jenniber Franco
+ * Date: 02/09/2018
+ */
+
+import java.util.Random;
+
 public class Card {
 	private int value;
 	

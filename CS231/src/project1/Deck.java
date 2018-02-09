@@ -1,6 +1,13 @@
 package project1;
 
+/**
+ * File: Deck.java
+ * Author: Jenniber Franco
+ * Date: 02/09/2018
+ */
+
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck{
 	
@@ -25,7 +32,16 @@ public class Deck{
 		return deck.remove(0);
 	}
 	
+	public Card pick(int i) {
+		return deck.remove(i);
+	}
 	public void shuffle() {
+		ArrayList<Card> d = new ArrayList<Card>();
+		Random rand = new Random();
+		int n = deck.size();
+		while(n>0) {
+			int r = rand.nextInt(n);
+		}
 		
 	}
 }

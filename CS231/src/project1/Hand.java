@@ -1,5 +1,11 @@
 package project1;
 
+/**
+ * File: Hand.java
+ * Author: Jenniber Franco
+ * Date: 02/09/2018
+ */
+
 import java.util.ArrayList;
 
 public class Hand {
