@@ -53,6 +53,18 @@ public class Blackjack {
 		
 	}
 
+	public int oneRound() {
+		int dealerP = dealerHand.getTotalValue();
+		int playerP = playerHand.getTotalValue();
+		if(dealerP<playerP) {
+			return 1;
+		}
+		else if(dealerP>playerP) {
+			return -1;
+		}
+		return 0;
+	}
+	
 	public static void main(String[] args) {
 		Blackjack game = new Blackjack();
 		game.deal();
