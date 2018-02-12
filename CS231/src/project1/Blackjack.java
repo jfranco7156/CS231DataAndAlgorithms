@@ -7,14 +7,14 @@ public class Blackjack {
 	
 	public Blackjack() {
 		reset(true);
+		playerHand = new Hand();
+		dealerHand = new Hand();
 	}
 	
 	public void reset(boolean newDeck) {
 		if(newDeck) {
 			d = new Deck();
 			d.shuffle();
-			playerHand = new Hand();
-			dealerHand = new Hand();
 		}
 	}
 	
@@ -49,11 +49,10 @@ public class Blackjack {
 		if(dealerHand.getTotalValue()>21) {
 			return false;
 		}
-		return true;
-		
+		return true;		
 	}
 
-	public int oneRound() {
+	public int playRound() {
 		deal();
 		System.out.println(toString());
 		if (!playerTurn()) {
@@ -77,29 +76,12 @@ public class Blackjack {
 	
 	public static void main(String[] args) {
 		Blackjack game = new Blackjack();
-		game.deal();
-		System.out.println(game.toString());
-		if (!game.playerTurn()) {
-			System.out.println("The player went bust! Dealer wins!!!");
-		}
-		else if(!game.dealerTurn()) {
-			System.out.println("The dealer went bust! Player wins!!!");
-		}
-		else {
-			int dealerP = game.dealerHand.getTotalValue();
-			int playerP = game.playerHand.getTotalValue();
-			if(dealerP>playerP) {
-				System.out.println("The dealer has "+dealerP+". The player has "+playerP+".\nThe dealer has won!!!");
+		for(int i=0; i<6; i++) {
+			if(game.d.deck.size()<20) {
+				game.reset(true);
 			}
-			else if(dealerP<playerP) {
-				System.out.println("The dealer has "+dealerP+". The player has "+playerP+".\nThe player has won!!!");
-			}
-			else {
-				System.out.println("The dealer has "+dealerP+". The player has "+playerP+".\nIt's a tie!");
-			}	
+			game.playRound();
 		}
-		
-
 	}
 
 }
