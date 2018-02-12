@@ -13,28 +13,28 @@ public class Blackjack {
 	
 	public void reset(boolean newDeck) {
 		if(newDeck) {
-			d = new Deck();
-			d.shuffle();
+			setD(new Deck());
+			getD().shuffle();
 		}
 	}
 	
 	public void deal() {
 		for(int i=0; i<2; i++) {
-			playerHand.add(d.deal());
-			dealerHand.add(d.deal());
+			playerHand.add(getD().deal());
+			dealerHand.add(getD().deal());
 		}
 	}
 	
 	public String toStrng() {
 		String s = "The player has "+ playerHand.toString()+".\n";
 		s += "The delaer has "+ dealerHand.toString()+".\n";
-		s += "These are the cards left in the deck:"+ d.toString()+".";
+		s += "These are the cards left in the deck:"+ getD().toString()+".";
 		return s;
 	}
 	
 	public boolean playerTurn() {
 		while(playerHand.getTotalValue()<16) {
-			playerHand.add(d.deal());
+			playerHand.add(getD().deal());
 		}
 		if(playerHand.getTotalValue()>21) {
 			return false;
@@ -44,7 +44,7 @@ public class Blackjack {
 	
 	public boolean dealerTurn() {
 		while(dealerHand.getTotalValue()<17) {
-			dealerHand.add(d.deal());
+			dealerHand.add(getD().deal());
 		}
 		if(dealerHand.getTotalValue()>21) {
 			return false;
@@ -74,14 +74,21 @@ public class Blackjack {
 		}
 	}
 	
+	public Deck getD() {
+		return d;
+	}
+
+	public void setD(Deck d) {
+		this.d = d;
+	}
+	
 	public static void main(String[] args) {
 		Blackjack game = new Blackjack();
 		for(int i=0; i<6; i++) {
-			if(game.d.deck.size()<20) {
+			if(game.getD().deck.size()<20) {
 				game.reset(true);
 			}
 			game.playRound();
 		}
 	}
-
 }
