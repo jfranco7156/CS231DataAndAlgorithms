@@ -35,13 +35,27 @@ public class Deck{
 	public Card pick(int i) {
 		return deck.remove(i);
 	}
+	
 	public void shuffle() {
 		ArrayList<Card> d = new ArrayList<Card>();
+		for(int i=0;i<deck.size();i++) {
+			d.add(deck.get(i));
+		}
 		Random rand = new Random();
-		int n = deck.size();
+		int n = deck.size()-1;
 		while(n>0) {
 			int r = rand.nextInt(n);
+			deck.set(n, d.get(r));
+			d.remove(r);
+			n--;
 		}
-		
+	}
+	
+	public String toString() {
+		String s = "";
+		for(Card c:deck) {
+			s = s + c.getValue() + ", ";
+		}
+		return "The deck contains"+ s;
 	}
 }

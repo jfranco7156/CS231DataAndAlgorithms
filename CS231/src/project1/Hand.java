@@ -40,6 +40,13 @@ public class Hand {
 	}
 	
 	public String toString() {
+		String s = "";
+		for(Card c:cards) {
+			s = s + c.getValue() + ", ";
+		}
+		return "The deck contains"+ s;
+		/**
 		return "The hand is "+cards;
+		*/
 	}
 }

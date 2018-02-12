@@ -12,7 +12,8 @@ public class Card {
 	private int value;
 	
 	public Card() {
-		value = (int) (Math.random()*11);
+		Random rand = new Random();
+		value = rand.nextInt(10)+1;
 	}
 	
 	public Card(int v) {
@@ -26,6 +27,9 @@ public class Card {
 	
 	public static void main(String[] args) {
 		Card c = new Card();
+		Card v = new Card(10);
+		System.out.println(""+c.getValue());
+		System.out.println(""+v.getValue());
 	}
 	
 	public int getValue() {
