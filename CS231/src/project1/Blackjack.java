@@ -25,7 +25,7 @@ public class Blackjack {
 		}
 	}
 	
-	public String toStrng() {
+	public String toString() {
 		String s = "The player has "+ playerHand.toString()+".\n";
 		s += "The delaer has "+ dealerHand.toString()+".\n";
 		s += "These are the cards left in the deck:"+ getD().toString()+".";
