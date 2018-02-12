@@ -12,7 +12,7 @@ import java.util.Random;
 public class Shuffle {
 
 	public static void main(String[] args) {
-		ArrayList arrayL = new ArrayList();
+		ArrayList<Integer> arrayL = new ArrayList<Integer>();
 		Random rand = new Random();
 		for(int i=0; i<10;i++) {
 			int r = rand.nextInt(100);
