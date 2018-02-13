@@ -12,9 +12,9 @@ public class Blackjack {
 	private Hand dealerHand;
 	
 	public Blackjack() {
-		reset(true);
 		playerHand = new Hand();
 		dealerHand = new Hand();
+		reset(true);
 	}
 	
 	public void reset(boolean newDeck) {
@@ -25,6 +25,8 @@ public class Blackjack {
 	}
 	
 	public void deal() {
+		playerHand.reset();
+		dealerHand.reset();
 		for(int i=0; i<2; i++) {
 			playerHand.add(getD().deal());
 			dealerHand.add(getD().deal());
@@ -33,7 +35,7 @@ public class Blackjack {
 	
 	public String toString() {
 		String s = "The player has "+ playerHand.toString()+".\n";
-		s += "The delaer has "+ dealerHand.toString()+".\n";
+		s += "The dealer has "+ dealerHand.toString()+".\n";
 		s += "These are the cards left in the deck:"+ getD().toString()+".";
 		return s;
 	}
@@ -42,6 +44,7 @@ public class Blackjack {
 		while(playerHand.getTotalValue()<16) {
 			playerHand.add(getD().deal());
 		}
+		//System.out.println("The player has cards "+playerHand.toString()+" and it has a total of "+playerHand.getTotalValue());
 		if(playerHand.getTotalValue()>21) {
 			return false;
 		}
@@ -52,6 +55,7 @@ public class Blackjack {
 		while(dealerHand.getTotalValue()<17) {
 			dealerHand.add(getD().deal());
 		}
+		//System.out.println("The dealer has cards "+dealerHand.toString()+" and it has a total of "+dealerHand.getTotalValue());
 		if(dealerHand.getTotalValue()>21) {
 			return false;
 		}
@@ -60,7 +64,7 @@ public class Blackjack {
 
 	public int playRound() {
 		deal();
-		System.out.println(toString());
+		//System.out.println(toString());
 		if (!playerTurn()) {
 			return -1;
 		}
@@ -90,7 +94,7 @@ public class Blackjack {
 	
 	public static void main(String[] args) {
 		Blackjack game = new Blackjack();
-		for(int i=0; i<6; i++) {
+		for(int i=0; i<3; i++) {
 			if(game.getD().getDeck().size()<20) {
 				game.reset(true);
 			}

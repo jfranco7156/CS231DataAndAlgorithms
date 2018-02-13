@@ -1,5 +1,7 @@
 package project1;
 
+import java.text.DecimalFormat;
+
 /**
  * File: Simulation.java
  * Author: Jenniber Franco
@@ -18,19 +20,22 @@ public class Simulation {
 				game.reset(true);
 			}
 			int winner = game.playRound();
-			if(winner==0) {
-				ties++;
+			if(winner==-1) {
+				dealerWins++;
 			}
 			else if(winner==1) {
 				playerWins++;
 			}
 			else {
-				dealerWins++;
+				ties++;
 			}
 		}
-		System.out.println("The player has won " + playerWins+" times. A percentage of "+(playerWins/10));
-		System.out.println("The dealer has won "+ dealerWins+" times. A percentage of "+(dealerWins/10));
-		System.out.println("There has been "+ties+" pushes.");
+		DecimalFormat df = new DecimalFormat("#.#");
+		double playerW = (double) playerWins;
+		double dealerW = (double) dealerWins;
+		double pushes = (double) ties;
+		System.out.println("The player has won " + playerWins+" times. A percentage of "+df.format(playerW/10)+"%");
+		System.out.println("The dealer has won "+ dealerWins+" times. A percentage of "+df.format(dealerW/10)+"%");
+		System.out.println("There has been "+ties+" pushes. A percentage of "+df.format(pushes/10)+"%");
 	}
-
 }
