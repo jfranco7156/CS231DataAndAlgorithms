@@ -44,7 +44,7 @@ public class Hand {
 		for(Card c:cards) {
 			s = s + c.getValue() + ", ";
 		}
-		return "The deck contains"+ s;
+		return s;
 		/**
 		return "The hand is "+cards;
 		*/

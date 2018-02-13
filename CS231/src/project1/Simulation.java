@@ -1,5 +1,11 @@
 package project1;
 
+/**
+ * File: Simulation.java
+ * Author: Jenniber Franco
+ * Date: 02/09/2018
+ */
+
 public class Simulation {
 
 	public static void main(String[] args) {
@@ -8,7 +14,7 @@ public class Simulation {
 		int ties = 0;
 		Blackjack game = new Blackjack();
 		for(int i=0; i<1000; i++) {
-			if(game.getD().deck.size()<20) {
+			if(game.getD().getDeck().size()<20) {
 				game.reset(true);
 			}
 			int winner = game.playRound();

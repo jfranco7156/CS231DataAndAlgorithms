@@ -1,5 +1,11 @@
 package project1;
 
+/**
+ * File: Blackjack.java
+ * Author: Jenniber Franco
+ * Date: 02/09/2018
+ */
+
 public class Blackjack {
 	private Deck d;
 	private Hand playerHand;
@@ -85,7 +91,7 @@ public class Blackjack {
 	public static void main(String[] args) {
 		Blackjack game = new Blackjack();
 		for(int i=0; i<6; i++) {
-			if(game.getD().deck.size()<20) {
+			if(game.getD().getDeck().size()<20) {
 				game.reset(true);
 			}
 			game.playRound();
