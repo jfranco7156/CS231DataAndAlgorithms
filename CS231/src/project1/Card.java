@@ -1,7 +1,6 @@
 package project1;
-
-/**
- * File: Card.java
+/** 
+* File: Card.java
  * Author: Jenniber Franco
  * Date: 02/09/2018
  */

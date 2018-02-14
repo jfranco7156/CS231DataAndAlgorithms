@@ -1,5 +1,4 @@
 package project1;
-
 /**
  * File: Blackjack.java
  * Author: Jenniber Franco
@@ -36,7 +35,7 @@ public class Blackjack {
 	public String toString() {
 		String s = "The player has "+ playerHand.toString()+".\n";
 		s += "The dealer has "+ dealerHand.toString()+".\n";
-		s += "These are the cards left in the deck:"+ getD().toString()+".";
+		//s += "These are the cards left in the deck:"+ getD().toString()+".";
 		return s;
 	}
 	
@@ -98,7 +97,16 @@ public class Blackjack {
 			if(game.getD().getDeck().size()<20) {
 				game.reset(true);
 			}
-			game.playRound();
+			int winner = game.playRound();
+			if(winner==1){
+				System.out.println("The player has won!\n"+game.toString());
+			}
+			else if(winner==-1) {
+				System.out.println("The dealer has won!\n"+game.toString());
+			}
+			else {
+				System.out.println("The round has ended in a tie.\n"+game.toString());
+			}
 		}
 	}
 }

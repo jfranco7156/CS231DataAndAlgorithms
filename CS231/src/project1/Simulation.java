@@ -1,12 +1,11 @@
 package project1;
-
-import java.text.DecimalFormat;
-
 /**
  * File: Simulation.java
  * Author: Jenniber Franco
  * Date: 02/09/2018
  */
+
+import java.text.DecimalFormat;
 
 public class Simulation {
 

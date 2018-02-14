@@ -1,5 +1,4 @@
 package project1;
-
 /**
  * File: Hand.java
  * Author: Jenniber Franco
@@ -41,12 +40,15 @@ public class Hand {
 	
 	public String toString() {
 		String s = "";
-		for(Card c:cards) {
-			s = s + c.getValue() + ", ";
-		}
-		return s;
+		return s+getTotalValue();
 		/**
-		return "The hand is "+cards;
+		*for(Card c:cards) {
+		*	s = s + c.getValue() + ", ";
+		*}
+		*return s;
+		*/
+		/**
+			*return "The hand is "+cards;
 		*/
 	}
 }
