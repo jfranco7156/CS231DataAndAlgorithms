@@ -38,39 +38,38 @@ public class Blackjack {
 		return s;
 	}
 	
+	public Hand getPlayerHand() {
+		return playerHand;
+	}
+	
+	public Hand getDealerHand() {
+		return dealerHand;
+	}
+	
 	/**
 	 * This method was kept to keep the simulation class running. It essentially keeps hitting until the player receives a
-	 *  total value of 16 or higher. If the players total value is less than 21, the method will return false because 
-	 *  the player has not 'busted'. Otherwise, it will return true.
+	 *  total value of 16 or higher. If the players total value is greater than 21, the method will return false because 
+	 *  the player has 'busted'. Otherwise, it will return true.
 	 * @return
 	 */
 	public boolean playerTurn() {
 		while(playerHand.getTotalValue()<16) {
 			playerHand.add(getD().deal());
 		}
-		if(playerHand.getTotalValue()>21) {
-			return false;
-		}
-		return true;
+		return playerHand.getTotalValue() <= 21;
 	}
 	
 	/**
 	 * This method was kept to keep the simulation class running. It essentially keeps hitting until the dealer receives a
-	 *  total value of 17 or higher. If the players total value is less than 21, the method will return false because 
-	 *  the dealer has not 'busted'. Otherwise, it will return true.
+	 *  total value of 17 or higher. If the players total value is greater than 21, the method will return false because 
+	 *  the dealer has 'busted'. Otherwise, it will return true.
 	 * @return
 	 */
 	public boolean dealerTurn() {
 		while(dealerHand.getTotalValue()<17) {
 			dealerHand.add(getD().deal());
 		}
-		//System.out.println("The dealer has cards "+dealerHand.toString()+" and it has a total of "+dealerHand.getTotalValue());
-		return dealerHand.getTotalValue() <= 21;
-/*
-		if(dealerHand.getTotalValue()>21) {
-			return false;
-		}
-		return true;*/		
+		return dealerHand.getTotalValue() <= 21;	
 	}
 
 	public int playRound() {

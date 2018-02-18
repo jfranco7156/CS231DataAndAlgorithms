@@ -18,7 +18,21 @@ public class InteractiveGame {
 		dealerWins = 0;
 		ties = 0;
 		game.deal();
-		
+		System.out.println("The game will now begin....\nYou weare currently dealt "+game.getPlayerHand()+".\n"
+				+ "It has a total value of "+game.getPlayerHand().getTotalValue()+"\nThe dealer was dealt ");
+		if(game.getD().getDeck().size()<20) {
+			game.reset(true);
+		}
+		int winner = game.playRound();
+		if(winner==-1) {
+			dealerWins++;
+		}
+		else if(winner==1) {
+			playerWins++;
+		}
+		else {
+			ties++;
+		}
 	}
 	
 	public static void welcomeBlackjack() {

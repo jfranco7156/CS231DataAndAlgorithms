@@ -21,7 +21,6 @@ public class Deck{
 		for(int i=1; i<10; i++) {
 			for(int j=0; j<4; j++) {
 				Card c = new Card(i);
-				//System.out.println(c.getValue());
 				getDeck().add(c);
 			}
 		}

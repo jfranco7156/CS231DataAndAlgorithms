@@ -41,14 +41,5 @@ public class Hand {
 	public String toString() {
 		String s = "";
 		return s+getTotalValue();
-		/**
-		*for(Card c:cards) {
-		*	s = s + c.getValue() + ", ";
-		*}
-		*return s;
-		*/
-		/**
-			*return "The hand is "+cards;
-		*/
 	}
 }
