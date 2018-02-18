@@ -65,10 +65,12 @@ public class Blackjack {
 			dealerHand.add(getD().deal());
 		}
 		//System.out.println("The dealer has cards "+dealerHand.toString()+" and it has a total of "+dealerHand.getTotalValue());
+		return dealerHand.getTotalValue() <= 21;
+/*
 		if(dealerHand.getTotalValue()>21) {
 			return false;
 		}
-		return true;		
+		return true;*/		
 	}
 
 	public int playRound() {
