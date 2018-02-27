@@ -1,5 +1,9 @@
 package project2;
-
+/**
+ * File: Landscape.java
+ * Author: Jenniber Franco
+ * Date: 02/26/2018
+ */
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -30,7 +34,7 @@ public class Landscape {
 		return grid.length;
 	}
 	
-	//Returns the number of cols in the grid
+	//Returns the number of columns in the grid
 	public int getCols() {
 		return grid[0].length;
 	}
@@ -70,21 +74,24 @@ public class Landscape {
 	
 	//Moves the cells forwards on the grid
 	public void advance() {
+		//Creates a temporary landscape with the same information from the current Landscape
 		Landscape scape = new Landscape(this.getRows(),this.getCols());
+		//Loops through the temporary landscape to assign it the Cells value of whether it is alive or not
 		for(int i=0; i<this.getRows(); i++) {
 			for(int j=0; j<this.getCols(); j++) {
 				scape.getCell(i,j).setAlive(getCell(i,j).getAlive());
 			}
 		}
+		//Updates the cell depending on the neighbors from the Landscape scape status
 		for(int i=0; i<scape.getRows(); i++) {
 			for(int j=0; j<scape.getCols(); j++) {
 				scape.getCell(i,j).updateState(this.getNeighbors(i, j));
 			}
 		}
+		//Sets the status of the Cell in the grid to the status of the Cell in the temporary Landscape
 		for(int i=0; i<this.getRows(); i++) {
 			for(int j=0; j<this.getCols(); j++) {
-				grid[i][j].setAlive(scape.getCell(i, j).getAlive());
-				//getCell(i,j).setAlive(scape.getCell(i,j).getAlive());
+				getCell(i,j).setAlive(scape.getCell(i,j).getAlive());
 			}
 		}
 		

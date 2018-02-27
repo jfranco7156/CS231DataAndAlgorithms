@@ -1,5 +1,10 @@
 package project2;
-
+/**
+ * File: Cell.java
+ * Author: Jenniber Franco
+ * Date: 02/26/2018
+ */
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -40,11 +45,14 @@ public class Cell {
 				cellsAlive++;//Adds one every time a neighbor of the cells is alive
 			}
 		}
-		if(getAlive() && (cellsAlive==2 || cellsAlive==3)) {
-			setAlive(false);//If the cell is alive and there are either 2 or 3 Cell neighbors that are alive, then the Cell is dead
+		if(getAlive() && (cellsAlive==3 || cellsAlive>4)) {
+			setAlive(true);//If the cell is alive and there are either 2 or 3 Cell neighbors that are alive, then the Cell is dead
 		}
 		else if(!getAlive() && cellsAlive==3){
 			setAlive(true);//If the cell is dead and there is 3 Cell neighbors that are alive, then the Cell is alive
+		}
+		else if(getAlive() && cellsAlive==2) {
+			setAlive(false);
 		}
 		else {
 			setAlive(false);//If the above conditions fail, then the Cell is dead
@@ -52,10 +60,15 @@ public class Cell {
 	}
 	
 	public void draw(Graphics g, int i, int j, int gridScale) {
-		if(this.getAlive()) {
-			g.drawRect(i,j,gridScale,gridScale);
-		}
 		
+		if(this.getAlive()) {
+			g.setColor(new Color(149,32,32));
+			g.fillRect(i,j,gridScale,gridScale);
+		}
+		else {
+			g.setColor(new Color(71,77,161));
+			g.fillRect(i,j,gridScale,gridScale);
+		}
 	}
 	
 	public static void main(String[] args) {
