@@ -46,13 +46,13 @@ public class Cell {
 			}
 		}
 		if(getAlive() && (cellsAlive==3 || cellsAlive>4)) {
-			setAlive(true);//If the cell is alive and there are either 2 or 3 Cell neighbors that are alive, then the Cell is dead
+			setAlive(true);//If the cell is alive and there are either 3 or more than 4 Cell neighbors that are alive, then the Cell is alive
 		}
 		else if(!getAlive() && cellsAlive==3){
 			setAlive(true);//If the cell is dead and there is 3 Cell neighbors that are alive, then the Cell is alive
 		}
 		else if(getAlive() && cellsAlive==2) {
-			setAlive(false);
+			setAlive(false);//If the cell is alive and there are 2 Cell neighbors that are alive, then the Cell is dead
 		}
 		else {
 			setAlive(false);//If the above conditions fail, then the Cell is dead

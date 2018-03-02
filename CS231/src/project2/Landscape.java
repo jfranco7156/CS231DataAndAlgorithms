@@ -63,8 +63,6 @@ public class Landscape {
 			for(int j=-1; j<=1; j++) {
 				if(i==0 && j==0);
 				else if(row+i>=0 && row+i<getRows() && col+j>=0 && col+j<getCols()) {
-					System.out.println(row+i);
-					System.out.println(col+j);
 					neighbors.add(getCell(row+i,col+j));
 				}
 			}
