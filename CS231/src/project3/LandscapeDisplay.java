@@ -1,3 +1,4 @@
+package project3;
 /*
 	Originally written by Bruce A. Maxwell a long time ago.
 	Updated by Brian Eastwood and Stephanie Taylor more recently
@@ -141,7 +142,7 @@ public class LandscapeDisplay extends JFrame
 				if(args.length > 0)
 						scape.read( args[0] );
 
-        LandscapeDisplay display = new LandscapeDisplay(scape, 30);
+        LandscapeDisplay display = new LandscapeDisplay(scape, 100);
 
         display.repaint();
 		}
