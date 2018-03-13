@@ -17,7 +17,7 @@ public class SocialAgentSimulation{
 		}
         
         LandscapeDisplay display = new LandscapeDisplay(scape);//Initializes a new LandscapeDisplay
-        for(int i=0; i< 20; i++) {
+        for(int i=0; i< 100; i++) {
         	scape.updateAgents();//Calls the updateAgents to update the position of Agents
         	display.repaint();//Repaints the display window
         	Thread.sleep(250);//Makes the thread sleep for 250 milliseconds

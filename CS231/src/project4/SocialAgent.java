@@ -1,4 +1,5 @@
 package project4;
+import java.awt.Color;
 /**
  * File: SocialAgent.java
  * Author: Jenniber Franco
@@ -6,7 +7,11 @@ package project4;
  */
 import java.awt.Graphics;
 import java.util.Random;
-
+/**
+ * File: SocialAgent.java
+ * Author: Jenniber Franco
+ * Date: 03/12/2018
+ */
 public class SocialAgent extends Agent {
 
 	public SocialAgent(double x0, double y0) {
@@ -40,6 +45,8 @@ public class SocialAgent extends Agent {
 	public void draw(Graphics g) {
 		int cX = (int) (getX0()-2.5);//Creates a center for x-coordinate
 		int cY = (int) (getY0()-2.5);//Creates a center for y-coordinate
+		
+		g.setColor(Color.MAGENTA);//Sets the graphics color to magenta
 		
 		g.fillOval(cX, cY, 5, 5);//Draws the CategorizedSocialAgent using graphics
 	}

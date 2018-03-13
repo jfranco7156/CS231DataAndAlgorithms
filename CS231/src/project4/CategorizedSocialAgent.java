@@ -1,4 +1,5 @@
 package project4;
+import java.awt.Color;
 /**
  * File: CategorizedSocialAgent.java
  * Author: Jenniber Franco
@@ -62,6 +63,18 @@ public class CategorizedSocialAgent extends SocialAgent {
 	public void draw(Graphics g) {
 		int cX = (int) (getX0()-2.5);//Creates a center for x-coordinate
 		int cY = (int) (getY0()-2.5);//Creates a center for y-coordinate
+		
+		//EXTENSION: Edited graphics color to differentiate between categories
+		if(getCategory()==0) {
+			g.setColor(Color.RED);//Sets the graphics color to red
+		}
+		else if(getCategory()==1) {
+			g.setColor(Color.BLUE);//Sets the graphics color to blue
+		}
+		else if(getCategory()==2) {
+			g.setColor(Color.GREEN);//Sets the graphics color to green
+		}
+		
 		
 		g.fillOval(cX, cY, 5, 5);//Draws the CategorizedSocialAgent using graphics
 	}
