@@ -5,6 +5,8 @@ package project4;
 	Linked List test class
 */
 
+import java.util.ArrayList;
+
 public class LLTest {
 
 	public static void main(String[] args) {
@@ -69,6 +71,18 @@ public class LLTest {
 		llist.remove(4);
 		System.out.printf("\nAfter removing %d\n", llist.size());
 		for (Integer item: llist) {
+			System.out.printf("thing %d\n", item);
+		}
+		
+		ArrayList<Integer> alist = llist.toArrayList();
+		System.out.printf("\nAfter copying %d\n", alist.size());
+		for(Integer item: alist) {
+			System.out.printf("thing %d\n", item);
+		}						
+		
+		alist = llist.toShuffledList();	
+		System.out.printf("\nAfter copying %d\n", alist.size());
+		for(Integer item: alist) {
 			System.out.printf("thing %d\n", item);
 		}
 	}
