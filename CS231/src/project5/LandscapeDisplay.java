@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -110,7 +111,7 @@ private class LandscapePanel extends JPanel
     {
             super();
             this.setPreferredSize(new Dimension(width, height));
-            this.setBackground(Color.WHITE);
+            this.setBackground(Color.getHSBColor((float).202,(float).90,(float).86));
     }
 
     /**
@@ -124,7 +125,8 @@ private class LandscapePanel extends JPanel
     {
         super.paintComponent(g);
         scape.draw( g );
-        Image image = Toolkit.getDefaultToolkit().getImage("resources/walmart_logo.jpg")
+        Image image = Toolkit.getDefaultToolkit().getImage("resources/walmart_logo.jpg");
+        g.drawImage(image,(int) (scape.getWidth()/80),(int)(scape.getHeight()/80) , this);
     } // end paintComponent
     
 } // end LandscapePanel

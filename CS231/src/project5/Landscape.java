@@ -73,14 +73,6 @@ public class Landscape {
 			a.draw(g);//Calls the individual CustomerAgent draw method
 		}
 		
-		//char [] rgc = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
-
-	   //g.drawChars(rgc, 0, 5, 25, 25);
-	   //g.drawChars(rgc, 5, 5, 25, 50);
-		g.setColor(Color.BLUE);
-		//g.fillRect(getWidth()/20, getHeight()/20, (int)(getWidth()*.8), (int)(getHeight()*.2));
-		//g.setColor(Color.WHITE);
-	    g.drawString("WALMART", getWidth()/20, getHeight()/20);
 	}
 	
 	public static void main(String[] args) {
