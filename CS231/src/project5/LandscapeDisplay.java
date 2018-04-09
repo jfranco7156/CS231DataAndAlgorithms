@@ -1,5 +1,4 @@
 package project5;
-
 /*
 Originally written by Bruce A. Maxwell a long time ago.
 Updated by Brian Eastwood and Stephanie Taylor more recently
@@ -111,7 +110,7 @@ private class LandscapePanel extends JPanel
     {
             super();
             this.setPreferredSize(new Dimension(width, height));
-            this.setBackground(Color.getHSBColor((float).202,(float).90,(float).86));
+            this.setBackground(new Color(98,148,229));
     }
 
     /**
@@ -125,8 +124,8 @@ private class LandscapePanel extends JPanel
     {
         super.paintComponent(g);
         scape.draw( g );
-        Image image = Toolkit.getDefaultToolkit().getImage("resources/walmart_logo.jpg");
-        g.drawImage(image,(int) (scape.getWidth()/80),(int)(scape.getHeight()/80) , this);
+        Image image = Toolkit.getDefaultToolkit().getImage("resources/walmart_logo.png");
+        g.drawImage(image,(int) (scape.getWidth()/4),(int)(scape.getHeight()/80), scape.getWidth()/2, scape.getHeight()/10 , this);
     } // end paintComponent
     
 } // end LandscapePanel
@@ -145,7 +144,7 @@ public static void main(String[] args) throws InterruptedException {
 
 	for(int i=0;i<200;i++) {
 		scape.addCustomerAgent( new CustomerAgent( gen.nextDouble() * scape.getWidth(),
-			 gen.nextDouble() * scape.getHeight(), gen.nextInt(3) ) );
+			 gen.nextDouble() * scape.getHeight(), gen.nextInt(3)+1 ) );
 	}
 
     LandscapeDisplay display = new LandscapeDisplay(scape);

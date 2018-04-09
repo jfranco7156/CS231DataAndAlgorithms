@@ -21,6 +21,7 @@ public class MyQueue<T> implements Iterable<T>{
 		size = 0;//Sets the size to 0
 	}
 	
+	//returns the size of queue
 	public int size() {
 		return size;
 	}
@@ -45,15 +46,15 @@ public class MyQueue<T> implements Iterable<T>{
 	//Retrieves and removes the head of this queue, or returns null if this queue is empty.
 	public T poll() {
 		if(head==null) return null;//Return null if head is empty
-		T item = head.getThing();
+		T item = head.getThing();//Stores the item of the head node
 		if(head.getNext()==null) {
-			size--;
-			return item;
+			size--;//decreases the size by 1
+			return item;//Returns the item
 		}
-		head = head.getNext();
-		head.setPrev(null);
-		size--;
-		return item;
+		head = head.getNext();//Sets the head to the Node after head
+		head.setPrev(null);//Sets the previous Node of the current head to null
+		size--;//decreases the size by 1
+		return item;//Returns the item
 	}
 	
 	//Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
@@ -64,14 +65,14 @@ public class MyQueue<T> implements Iterable<T>{
 	
 	//Returns the type at the specified index parameter
 	public T get(int index) {
-		if(index<0 || index>=size)return null;
+		if(index<0 || index>=size)return null;//if index is out of bounds, returns null
 		
-		Node n = head;
+		Node n = head;//Saves the head as the Node n
 		for(int i =0; i<index; i++) {
-			n = n.getNext();
+			n = n.getNext();//retrieves the next Node of n
 		}
 		
-		return n.getThing();
+		return n.getThing();//returns the item of the Node at the specified index
 	}
 
 	// Return a new LLIterator pointing to the head of the list
@@ -165,11 +166,11 @@ public class MyQueue<T> implements Iterable<T>{
 	}
 	
 	public static void main(String[] args) {
-		MyQueue<Agent> q = new MyQueue<Agent>();
-		q.offer(new Agent(0,0));
-		q.offer(new Agent(100,100));
-		q.offer(new Agent(200,200));
-		q.offer(new Agent(300,300));
+		MyQueue<Agent> q = new MyQueue<Agent>();//Initializes a MyQueue object
+		q.offer(new Agent(0,0));//Adds a Agent with the position of (0,0) to q
+		q.offer(new Agent(100,100));//Adds a Agent with the position of (100,100) to q
+		q.offer(new Agent(200,200));//Adds a Agent with the position of (200,200) to q
+		q.offer(new Agent(300,300));//Adds a Agent with the position of (300,300) to q
 	}
 
 }
