@@ -14,14 +14,15 @@ import java.util.ArrayList;
 
 public class WordCounter {
 	//fields
-	private BSTMap<String,Integer> map;
+	private BSTMap<String,Integer> map;//Stores the map of the tree
 	private int wordC;//Keeps track of the number of words
 	
 	public WordCounter() {
-		map = new BSTMap<String,Integer>(new StringAscending());
-		wordC = 0;	
+		map = new BSTMap<String,Integer>(new StringAscending());//Initializes the map
+		wordC = 0;//Sets the word count to 0
 	}
 	
+	//Generates the word counts from a file od words
 	public boolean analyze(String filename) {
 		try {
 	    	FileReader fr = new FileReader(filename);//Creates a FileReader type of the filename
@@ -31,7 +32,7 @@ public class WordCounter {
 	    		if(s==null)break;//breaks the loop if s is null
 	    		// split line into words. The regular expression can be interpreted
 	    	    // as split on anything that is not (^) (a-z or A-Z or 0-9 or ').
-	    	    String[] words = s.split("[^a-zA-Z0-9']");
+	    	    String[] words = s.split("[^a-zA-Z0-9']");//Splits the string
 	    	    for (int i = 0; i < words.length; i++) {
 	    	        String word = words[i].trim().toLowerCase();
 	    	        // Might want to check for a word of length 0
@@ -39,13 +40,13 @@ public class WordCounter {
 	    	        	continue;
 	    	        }
 	    	        // Write code to update the map
-	    	        if(map.get(word) == null) {
-	    	        	map.put(word, 1);
+	    	        if(map.containsKey(word)) {
+	    	        	map.put(word, map.get(word)+1);//Update the value of the word
 	    	        }
 	    	        else {
-	    	        	map.put(word, map.get(word)+1);
+	    	        	map.put(word, 1);//Adds the new word to the map
 	    	        }
-	    	        wordC++;
+	    	        wordC++;//Increments the word count
 	    	    }
 	    	}
 	    	br.close();//close BufferedReader
@@ -66,36 +67,38 @@ public class WordCounter {
 	//Writes the contents of the BSTMap to a word count file
 	public void writeWordCountFile(String filename) {
 		try {
-			FileWriter fw = new FileWriter(filename);
-			fw.write("total Word Count: "+wordC);//Writes the first line
+			FileWriter fw = new FileWriter(filename);//Creates a FileWriter object
+			fw.write("totalWordCount : "+wordC);//Writes the first line
+			//Stores the elements in the binary tree in an ArrayList
 			ArrayList<KeyValuePair<String, Integer>> list = map.entrySet();
 			for(int i = 0; i < list.size(); i++) {
+				//Writes the key and value in a new line
 				fw.write("\n"+list.get(i).getKey()+" "+list.get(i).getValue());
 			}
-			fw.close();
+			fw.close();//Closes the FileWriter object
 		}
 		catch(IOException ex) {
-	    	//returns the message if it could not properly read the file
-	      System.out.println("WordCounter.writeFile():: error writing file " + filename);
+	    	//returns the message if it could not properly write the file
+	    	System.out.println("WordCounter.writeFile():: error writing file " + filename);
 	    }
 	}
 	
 	//Reads the contents of a word count file and reconstructs fields of the wordC object
-	public void readWordCountFiel(String filename) {
+	public void readWordCountFile(String filename) {
 		try {
 			FileReader fr = new FileReader(filename);//Creates a FileReader type of the filename
 	    	BufferedReader br = new BufferedReader(fr);//Creates a BufferedReader type of fr
-			boolean first = true;
+			boolean first = true;//boolean to check whether it is the first word
 			while(true) {
-				String s = br.readLine();
-				if(s == null) break;
-				String[] words = s.split("[^a-zA-Z0-9']");
+				String s = br.readLine();//reads the line in BufferedReader
+				if(s == null) break;//breaks if s is null
+				String[] words = s.split("[^a-zA-Z0-9']");//Splits the string
 				if(first) {
-					//specific to me, check the words to the list to see breaks
-					wordC = Integer.parseInt(words[3]);
-					first = false;
+					wordC = Integer.parseInt(words[words.length-1]);//Sets the wordC
+					first = false;//Sets first to false
 					continue;
 				}
+				//If the word is not first, adds the words to the map with the occurence
 				map.put(words[0], Integer.parseInt(words[1]));
 			}
 		}
@@ -109,46 +112,36 @@ public class WordCounter {
 	    }
 	}
 	
-	
-	
+	//returns the total word count
 	public int getTotalWordCount() {
 		return wordC;
 	}
 	
+	//returns the value for the word
 	public int getCount(String word) {
 		if(map.get(word) == null) return 0;
 		return map.get(word);
 	}
 	
+	//Returns the frequency in which the word occurs 
+	//divided by the total number of words
 	public double getFrequency(String word) {
-		if(map.get(word) == null) return 0;
-		return (double)map.get(word)/wordC;
+		if(map.get(word) == null) return 0;//returns 0 when the word is not found
+		return (double)map.get(word)/wordC;//returns the occurence divided by the total words
 	}
 	
+	//returns a string of the map
 	public String toString() {
 		return map.toString();
 	}
 	
-	public String mostFreq() {
-		ArrayList<KeyValuePair<String,Integer>> value = map.entrySet();
-		int max= 0;
-		String tracker = "";
-		for(int i=0; i<value.size();i++) {
-			int check = value.get(i).getValue();
-			if(check>max) {
-				max = check;
-				tracker = value.get(i).getKey();
-			}
-		}
-		return tracker;
-	}
-	
 	public static void main(String[] args) {
 		WordCounter counter = new WordCounter();
-		String input = args[0];
-		String output = "analyzed" + input;
+		//String input = args[0];
+		String input = "resources/counts_ct.txt";
+		String output = "resources/analyzed_" + input;
 		double start = System.currentTimeMillis();
-		counter.analyze(input);
+		System.out.print(counter.analyze(input));
 		double end = System.currentTimeMillis();
 		System.out.println((end-start)/1000+" seconds");
 		counter.writeWordCountFile(output);

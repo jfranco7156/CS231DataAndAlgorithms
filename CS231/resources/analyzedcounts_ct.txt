@@ -1,0 +1,16 @@
+totalWordCount : 22
+totalwordcount 1
+24 1
+1 4
+2 2
+it 1
+4 4
+best 1
+age 1
+foolishness 1
+the 1
+of 1
+times 1
+was 1
+worst 1
+wisdom 1

@@ -10,7 +10,7 @@ public class WCTester {
 		WordCounter counter = new WordCounter();
 		counter.analyze("resources/counttest.txt");
 		counter.writeWordCountFile("resources/counts_ct.txt");
-		counter.readWordCountFiel("resources/counts_ct.txt");
+		counter.readWordCountFile("resources/counts_ct.txt");
 		counter.writeWordCountFile("resources/counts_ct_v2.txt");
 	}
 
